@@ -4,6 +4,9 @@ import ContactMedia, {
   type Props as ContactProps,
 } from "../components/ContactMedia.astro";
 import HomeSection from "../components/HomeSection.astro";
+import PersonalProject, {
+  type PersonalProjectType,
+} from "../components/PersonalProject.astro";
 
 const experiences = (
   await Astro.glob("../../public/experience/*.md")
@@ -19,6 +22,21 @@ const contactLinks: ContactProps[] = [
     media: "GitHub",
     link: "https://github.com/RowMur",
     display: "RowMur",
+  },
+];
+
+const personalProjects: PersonalProjectType[] = [
+  {
+    title: "St Georges TTC Site",
+    subTitle: "A website for my local table tennis club",
+    imagePath: "/personalProjects/st-georges-site.png",
+    githubLink: "https://github.com/RowMur/st-georges-site",
+  },
+  {
+    title: "TT Tournament Finder",
+    subTitle:
+      "A web scraper for table tennis tournaments that sends me regular emails",
+    githubLink: "https://github.com/RowMur/tournament-finder",
   },
 ];
 ---
@@ -41,6 +59,13 @@ const contactLinks: ContactProps[] = [
         >A junior software engineer based in Cambridge, UK.</span
       >
     </h1>
+    <HomeSection title="Personal Projects">
+      {
+        personalProjects.map((personalProject) => (
+          <PersonalProject personalProject={personalProject} />
+        ))
+      }
+    </HomeSection>
     <HomeSection title="Experience">
       {experiences.map((experience) => <Experience experience={experience} />)}
     </HomeSection>
