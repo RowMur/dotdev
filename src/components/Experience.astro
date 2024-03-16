@@ -9,7 +9,7 @@ const { experience } = Astro.props;
 ---
 
 <div class="flex mb-[16px]">
-  <div class="min-w-[160px] mr-[8px] opacity-60 font-semibold">
+  <div class="hidden sm:block min-w-[160px] mr-[8px] opacity-60 font-semibold">
     {experience.frontmatter.date}
   </div>
   <div>
@@ -17,7 +17,9 @@ const { experience } = Astro.props;
       {experience.frontmatter.company}
       <br />
       <span class="opacity-60 text-sm font-medium"
-        >{experience.frontmatter.role}</span
+        >{experience.frontmatter.role}<span class="sm:hidden"
+          >, {experience.frontmatter.date}</span
+        ></span
       >
     </h4>
     <div class="experience-content">
