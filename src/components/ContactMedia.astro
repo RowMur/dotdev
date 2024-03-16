@@ -1,0 +1,16 @@
+---
+export type Props = {
+  media: string;
+  display: string;
+  link: string;
+};
+
+const { media, display, link }: Props = Astro.props;
+---
+
+<div class="flex mb-[8px]">
+  <div class="min-w-[160px] mr-[8px] opacity-60 font-semibold">
+    {media}
+  </div>
+  <a href={link}>{display}</a>
+</div>

@@ -1,9 +1,26 @@
 ---
 import Experience from "../components/Experience.astro";
+import ContactMedia, {
+  type Props as ContactProps,
+} from "../components/ContactMedia.astro";
+import HomeSection from "../components/HomeSection.astro";
 
 const experiences = (
   await Astro.glob("../../public/experience/*.md")
 ).reverse();
+
+const contactLinks: ContactProps[] = [
+  {
+    media: "LinkedIn",
+    link: "https://www.linkedin.com/in/rowan-murray-303242246/",
+    display: "Rowan Murray",
+  },
+  {
+    media: "GitHub",
+    link: "https://github.com/RowMur",
+    display: "RowMur",
+  },
+];
 ---
 
 <html lang="en">
@@ -24,9 +41,19 @@ const experiences = (
         >A junior software engineer based in Cambridge, UK.</span
       >
     </h1>
-    <section class="mt-[48px]">
-      <h2 class="font-bold text-lg my-4">Experience</h2>
+    <HomeSection title="Experience">
       {experiences.map((experience) => <Experience experience={experience} />)}
-    </section>
+    </HomeSection>
+    <HomeSection title="Contact">
+      {
+        contactLinks.map((contactLink) => (
+          <ContactMedia
+            display={contactLink.display}
+            link={contactLink.link}
+            media={contactLink.media}
+          />
+        ))
+      }
+    </HomeSection>
   </body>
 </html>
