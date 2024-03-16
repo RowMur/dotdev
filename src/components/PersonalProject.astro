@@ -1,9 +1,12 @@
 ---
+import ClickableCard from "./ClickableCard.astro";
+
 export type PersonalProjectType = {
   title: string;
   subTitle: string;
   githubLink: string;
   imagePath?: string;
+  liveDemoLink?: string;
 };
 
 type Props = {
@@ -13,19 +16,32 @@ type Props = {
 const { personalProject }: Props = Astro.props;
 ---
 
-<a
-  href={personalProject.githubLink}
-  class="w-full p-4 flex rounded-xl bg-[#303030] hover:bg-[#404040] mb-4"
->
+<div class="flex gap-1">
+  <div class="w-full">
+    <ClickableCard href={personalProject.githubLink}>
+      {
+        personalProject.imagePath && (
+          <img
+            src={personalProject.imagePath}
+            class="max-h-12 mr-4 rounded-lg"
+          />
+        )
+      }
+      <div>
+        <h3 class="font-bold">
+          {personalProject.title}
+        </h3>
+        <p class="opacity-60 text-sm font-medium">{personalProject.subTitle}</p>
+      </div>
+    </ClickableCard>
+  </div>
   {
-    personalProject.imagePath && (
-      <img src={personalProject.imagePath} class="max-h-12 mr-4 rounded-lg" />
+    personalProject.liveDemoLink && (
+      <ClickableCard href={personalProject.liveDemoLink}>
+        <p class="text-center opacity-60 text-sm font-medium grid place-content-center">
+          Live Demo
+        </p>
+      </ClickableCard>
     )
   }
-  <div>
-    <h3 class="font-bold">
-      {personalProject.title}
-    </h3>
-    <p class="opacity-60 text-sm font-medium">{personalProject.subTitle}</p>
-  </div>
-</a>
+</div>
