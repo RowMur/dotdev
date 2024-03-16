@@ -8,38 +8,20 @@ type Props = {
 const { experience } = Astro.props;
 ---
 
-<div class="experience">
-  <div class="date">{experience.frontmatter.date}</div>
+<div class="flex mb-[16px]">
+  <div class="min-w-[160px] mr-[8px] opacity-60 font-semibold">
+    {experience.frontmatter.date}
+  </div>
   <div>
-    <h4>
+    <h4 class="mb-2 font-bold">
       {experience.frontmatter.company}
       <br />
-      <span>{experience.frontmatter.role}</span>
+      <span class="opacity-60 text-sm font-medium"
+        >{experience.frontmatter.role}</span
+      >
     </h4>
     <div class="experience-content">
       <experience.Content />
     </div>
   </div>
 </div>
-<style>
-  .date {
-    min-width: 160px;
-    margin-right: 8px;
-    opacity: 0.6;
-  }
-
-  h4 {
-    margin: 0;
-  }
-
-  h4 > span {
-    opacity: 0.6;
-    font-size: smaller;
-    font-weight: lighter;
-  }
-
-  .experience {
-    display: flex;
-    margin-bottom: 16px;
-  }
-</style>

@@ -1,5 +1,4 @@
 ---
-import "@fontsource/inter";
 import Experience from "../components/Experience.astro";
 
 const experiences = (
@@ -15,40 +14,19 @@ const experiences = (
     <meta name="generator" content={Astro.generator} />
     <title>Rowan Murray - Junior Software Engineer</title>
   </head>
-  <body>
-    <h1>
+  <body
+    class="bg-[#252525] max-w-[544px] px-[24px] py-[40px] mx-auto text-white"
+  >
+    <h1 class="m-0 font-semibold text-3xl">
       Hi, I'm Rowan.
       <br />
-      <span>A junior software engineer based in Cambridge, UK.</span>
+      <span class="opacity-60"
+        >A junior software engineer based in Cambridge, UK.</span
+      >
     </h1>
-    <section>
-      <h2>Experience</h2>
+    <section class="mt-[48px]">
+      <h2 class="font-bold text-lg my-4">Experience</h2>
       {experiences.map((experience) => <Experience experience={experience} />)}
     </section>
   </body>
-  <style>
-    body {
-      background-color: #252525;
-      max-width: 544px;
-      padding: 40px 24px;
-      margin: 0 auto;
-      color: #fff;
-      font-family: "inter";
-    }
-    h1 {
-      margin: 0;
-    }
-
-    h2 {
-      font-size: large;
-    }
-
-    h1 > span {
-      opacity: 0.6;
-    }
-
-    section {
-      margin-top: 48px;
-    }
-  </style>
 </html>
