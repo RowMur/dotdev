@@ -9,7 +9,7 @@ import PersonalProject, {
 } from "../components/PersonalProject.astro";
 
 const experiences = (
-  await Astro.glob("../../public/experience/*.md")
+  await Astro.glob("../../public/experiences/*.md")
 ).reverse();
 
 const contactLinks: ContactProps[] = [
@@ -29,7 +29,7 @@ const personalProjects: PersonalProjectType[] = [
   {
     title: "St Georges TTC Site",
     subTitle: "A website for my local table tennis club",
-    imagePath: "/personalProjects/st-georges-site.png",
+    imagePath: "/images/personalProjects/st-georges-site.png",
     githubLink: "https://github.com/RowMur/st-georges-site",
     liveDemoLink: "https://www.stgeorgesclub.org.uk/",
   },
