@@ -1,0 +1,45 @@
+---
+import type { MarkdownInstance } from "astro";
+
+type Props = {
+  experience: MarkdownInstance<Record<string, any>>;
+};
+
+const { experience } = Astro.props;
+---
+
+<div class="experience">
+  <div class="date">{experience.frontmatter.date}</div>
+  <div>
+    <h4>
+      {experience.frontmatter.company}
+      <br />
+      <span>{experience.frontmatter.role}</span>
+    </h4>
+    <div class="experience-content">
+      <experience.Content />
+    </div>
+  </div>
+</div>
+<style>
+  .date {
+    min-width: 160px;
+    margin-right: 8px;
+    opacity: 0.6;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  h4 > span {
+    opacity: 0.6;
+    font-size: smaller;
+    font-weight: lighter;
+  }
+
+  .experience {
+    display: flex;
+    margin-bottom: 16px;
+  }
+</style>

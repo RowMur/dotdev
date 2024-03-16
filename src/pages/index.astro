@@ -1,5 +1,6 @@
 ---
 import "@fontsource/inter";
+import Experience from "../components/Experience.astro";
 
 const experiences = (
   await Astro.glob("../../public/experience/*.md")
@@ -22,35 +23,19 @@ const experiences = (
     </h1>
     <section>
       <h2>Experience</h2>
-      {
-        experiences.map((experience) => (
-          <div class="experience">
-            <div class="date">{experience.frontmatter.date}</div>
-            <div>
-              <h4>
-                {experience.frontmatter.company}
-                <br />
-                <span>{experience.frontmatter.role}</span>
-              </h4>
-              <div class="experience-content">
-                <experience.Content />
-              </div>
-            </div>
-          </div>
-        ))
-      }
+      {experiences.map((experience) => <Experience experience={experience} />)}
     </section>
   </body>
   <style>
     body {
       background-color: #252525;
       max-width: 544px;
-      margin: 40px auto;
+      padding: 40px 24px;
+      margin: 0 auto;
       color: #fff;
       font-family: "inter";
     }
-    h1,
-    h4 {
+    h1 {
       margin: 0;
     }
 
@@ -60,26 +45,6 @@ const experiences = (
 
     h1 > span {
       opacity: 0.6;
-    }
-
-    .date {
-      min-width: 160px;
-      margin-right: 8px;
-      opacity: 0.6;
-    }
-    .experience {
-      display: flex;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    h4 > span {
-      opacity: 0.6;
-      font-size: smaller;
-      font-weight: lighter;
     }
 
     section {
