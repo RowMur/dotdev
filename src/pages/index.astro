@@ -1,29 +1,16 @@
 ---
-import Experience from "../components/Experience.astro";
-import ContactMedia, {
-  type Props as ContactProps,
-} from "../components/ContactMedia.astro";
-import HomeSection from "../components/HomeSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DatedItem from "../components/DatedItem.astro";
+import Section from "../components/Section.astro";
 import PersonalProject, {
   type PersonalProjectType,
-} from "../components/PersonalProject.astro";
+} from "../features/PersonalProject.astro";
 
 const experiences = (
   await Astro.glob("../../public/experiences/*.md")
 ).reverse();
 
-const contactLinks: ContactProps[] = [
-  {
-    media: "LinkedIn",
-    link: "https://www.linkedin.com/in/rowan-murray-303242246/",
-    display: "Rowan Murray",
-  },
-  {
-    media: "GitHub",
-    link: "https://github.com/RowMur",
-    display: "RowMur",
-  },
-];
+const posts = await Astro.glob("./posts/*.md");
 
 const personalProjects: PersonalProjectType[] = [
   {
@@ -42,44 +29,41 @@ const personalProjects: PersonalProjectType[] = [
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Rowan Murray - Junior Software Engineer</title>
-  </head>
-  <body
-    class="bg-[#252525] max-w-[544px] px-[24px] py-[40px] mx-auto text-white"
-  >
-    <h1 class="m-0 font-semibold text-3xl">
-      Hi, I'm Rowan.
-      <br />
-      <span class="opacity-60"
-        >A junior software engineer based in Cambridge, UK.</span
-      >
-    </h1>
-    <HomeSection title="Personal Projects">
-      {
-        personalProjects.map((personalProject) => (
-          <PersonalProject personalProject={personalProject} />
-        ))
-      }
-    </HomeSection>
-    <HomeSection title="Experience">
-      {experiences.map((experience) => <Experience experience={experience} />)}
-    </HomeSection>
-    <HomeSection title="Contact">
-      {
-        contactLinks.map((contactLink) => (
-          <ContactMedia
-            display={contactLink.display}
-            link={contactLink.link}
-            media={contactLink.media}
+<BaseLayout
+  title="Hi, I'm Rowan."
+  subTitle="A junior software engineer based in Cambridge, UK."
+>
+  <Section title="Personal Projects">
+    {
+      personalProjects.map((personalProject) => (
+        <PersonalProject personalProject={personalProject} />
+      ))
+    }
+  </Section>
+  <Section title="Experience">
+    {
+      experiences.map((experience) => (
+        <DatedItem
+          date={experience.frontmatter.date}
+          title={experience.frontmatter.company}
+          subTitle={experience.frontmatter.role}
+        >
+          <experience.Content />
+        </DatedItem>
+      ))
+    }
+  </Section>
+  <Section title="Posts">
+    {
+      posts.map((post) => (
+        <a href={post.url}>
+          <DatedItem
+            date={post.frontmatter.pubDate}
+            title={post.frontmatter.title}
+            subTitle={post.frontmatter.subtitle}
           />
-        ))
-      }
-    </HomeSection>
-  </body>
-</html>
+        </a>
+      ))
+    }
+  </Section>
+</BaseLayout>

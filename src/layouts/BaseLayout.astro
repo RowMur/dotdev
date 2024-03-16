@@ -1,0 +1,33 @@
+---
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+
+type Props = {
+  title: string;
+  subTitle: string;
+};
+
+const { title, subTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Rowan Murray - Junior Software Engineer</title>
+  </head>
+  <body
+    class="bg-[#252525] max-w-[544px] px-[24px] py-[40px] mx-auto text-[#FAF9F6]"
+  >
+    <Navigation />
+    <h1 class="m-0 font-semibold text-3xl">
+      {title}
+      <br />
+      <span class="opacity-60">{subTitle}</span>
+    </h1>
+    <slot />
+    <Footer />
+  </body>
+</html>

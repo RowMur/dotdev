@@ -1,0 +1,31 @@
+---
+import ContactMedia, {
+  type Props as ContactProps,
+} from "../components/ContactMedia.astro";
+import Section from "../components/Section.astro";
+
+const contactLinks: ContactProps[] = [
+  {
+    media: "LinkedIn",
+    link: "https://www.linkedin.com/in/rowan-murray-303242246/",
+    display: "Rowan Murray",
+  },
+  {
+    media: "GitHub",
+    link: "https://github.com/RowMur",
+    display: "RowMur",
+  },
+];
+---
+
+<Section title="Contact">
+  {
+    contactLinks.map((contactLink) => (
+      <ContactMedia
+        display={contactLink.display}
+        link={contactLink.link}
+        media={contactLink.media}
+      />
+    ))
+  }
+</Section>
