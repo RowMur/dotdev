@@ -10,7 +10,7 @@ const experiences = (
   await Astro.glob("../../public/experiences/*.md")
 ).reverse();
 
-const posts = await Astro.glob("./posts/*.md");
+const posts = (await Astro.glob("./posts/*.md")).reverse();
 
 const personalProjects: PersonalProjectType[] = [
   {
