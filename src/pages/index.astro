@@ -58,7 +58,9 @@ const personalProjects: PersonalProjectType[] = [
       posts.map((post) => (
         <a href={post.url}>
           <DatedItem
-            date={post.frontmatter.pubDate}
+            date={new Date(post.frontmatter.pubDate).toLocaleDateString(
+              "en-GB"
+            )}
             title={post.frontmatter.title}
             subTitle={post.frontmatter.subtitle}
           />

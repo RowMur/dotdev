@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-pubDate: 16-03-2024
+pubDate: 2024-03-16
 title: "What is this?"
 subtitle: "Reasons for and aims of this blog"
 ---
