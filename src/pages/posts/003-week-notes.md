@@ -3,6 +3,7 @@ layout: ../../layouts/MarkdownLayout.astro
 pubDate: 2024-03-24
 title: "Week Notes"
 subtitle: "Setting up my mac, upgrading my personal site, and building a GQL API"
+tags: ["dev", "astro", "graphql"]
 ---
 
 I'm going to write these "Week notes" posts as a catch all for anything noteworthy but not substantial enough for a post of it's own - a bit of a brain dump. Whether or not I write them weekly is another question and only time will tell...

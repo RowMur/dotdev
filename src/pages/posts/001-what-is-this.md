@@ -3,6 +3,7 @@ layout: ../../layouts/MarkdownLayout.astro
 pubDate: 2024-03-16
 title: "What is this?"
 subtitle: "Reasons for and aims of this blog"
+tags: ["dev"]
 ---
 
 Welcome to my blog. I've wanted to start posting and documenting somewhere for a while now and here it is. Here are my reasons and thoughts behind why...

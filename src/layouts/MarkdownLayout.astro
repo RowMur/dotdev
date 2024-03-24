@@ -1,10 +1,14 @@
 ---
+import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} subTitle={frontmatter.subtitle}>
+  <div class="mt-4">
+    <Tags tags={frontmatter.tags} />
+  </div>
   <div class="mt-12">
     <slot />
   </div>

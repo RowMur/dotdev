@@ -5,4 +5,6 @@ company: 'Altium'
 ---
 Working on Nexar - a GraphQL based API bringing together the processes of the electronics industry.
 
+<br>
+
 Responsibilities included: documentation in the form of articles, example apps or scripts, support and creating internal dashboards.

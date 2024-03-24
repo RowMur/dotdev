@@ -1,0 +1,15 @@
+---
+type Props = {
+  text: String;
+};
+
+const { text }: Props = Astro.props;
+---
+
+<div
+  class="grid place-content-center rounded-full bg-[#303030] w-fit px-4 text-sm"
+>
+  <p class="opacity-60">
+    {text}
+  </p>
+</div>

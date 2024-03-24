@@ -3,6 +3,7 @@ layout: ../../layouts/MarkdownLayout.astro
 pubDate: 2024-03-16
 title: "Setting goals"
 subtitle: "Goals vs ambitions"
+tags: ["dev", "goals"]
 ---
 
 <h3 class="font-medium text-lg my-4">Background</h3>
