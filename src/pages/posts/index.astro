@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/Section.astro";
+import Post from "../../features/Post.astro";
+
+const posts = (await Astro.glob("./*.md")).reverse();
+---
+
+<BaseLayout title="Posts">
+  <Section>
+    {posts.map((post) => <Post post={post} />)}
+  </Section>
+</BaseLayout>

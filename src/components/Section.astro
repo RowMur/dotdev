@@ -1,12 +1,30 @@
 ---
-type Props = {
-  title?: string;
-};
+type Props =
+  | {
+      title: string;
+      titleLink?: {
+        text: string;
+        link: string;
+      };
+    }
+  | {};
 
-const { title }: Props = Astro.props;
+const props = Astro.props;
 ---
 
 <section class="mt-12">
-  {title && <h2 class="font-semibold text-lg my-4">{title}</h2>}
+  {
+    "title" in props && (
+      <h2 class="font-semibold text-lg my-4">
+        {props.title}
+        {props.titleLink && (
+          <a href={props.titleLink.link} class="opacity-60">
+            {" "}
+            - <em>{props.titleLink.text}</em>
+          </a>
+        )}
+      </h2>
+    )
+  }
   <slot />
 </section>

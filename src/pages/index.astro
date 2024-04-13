@@ -2,16 +2,18 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DatedItem from "../components/DatedItem.astro";
 import Section from "../components/Section.astro";
-import Tags from "../components/Tags.astro";
 import PersonalProject, {
   type PersonalProjectType,
 } from "../features/PersonalProject.astro";
+import Post from "../features/Post.astro";
 
 const experiences = (
   await Astro.glob("../../public/experiences/*.md")
 ).reverse();
 
-const posts = (await Astro.glob("./posts/*.md")).reverse();
+const posts = await Astro.glob("./posts/*.md");
+const nOfPosts = posts.length;
+const latestPosts = posts.slice(nOfPosts - 3, nOfPosts).reverse();
 
 const personalProjects: PersonalProjectType[] = [
   {
@@ -54,21 +56,13 @@ const personalProjects: PersonalProjectType[] = [
       ))
     }
   </Section>
-  <Section title="Posts">
-    {
-      posts.map((post) => (
-        <a href={post.url}>
-          <DatedItem
-            date={new Date(post.frontmatter.pubDate).toLocaleDateString(
-              "en-GB"
-            )}
-            title={post.frontmatter.title}
-            subTitle={post.frontmatter.subtitle}
-          >
-            <Tags tags={post.frontmatter.tags} />
-          </DatedItem>
-        </a>
-      ))
-    }
+  <Section
+    title="Latest Posts"
+    titleLink={{
+      link: "/posts",
+      text: "all posts",
+    }}
+  >
+    {latestPosts.map((post) => <Post post={post} />)}
   </Section>
 </BaseLayout>

@@ -1,0 +1,23 @@
+---
+import type { MarkdownInstance } from "astro";
+import DatedItem from "../components/DatedItem.astro";
+import Tags from "../components/Tags.astro";
+
+type Post = MarkdownInstance<Record<string, any>>;
+
+type Props = {
+  post: Post;
+};
+
+const { post } = Astro.props;
+---
+
+<a href={post.url}>
+  <DatedItem
+    date={new Date(post.frontmatter.pubDate).toLocaleDateString("en-GB")}
+    title={post.frontmatter.title}
+    subTitle={post.frontmatter.subtitle}
+  >
+    <Tags tags={post.frontmatter.tags} />
+  </DatedItem>
+</a>
