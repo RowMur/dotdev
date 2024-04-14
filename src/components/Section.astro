@@ -18,10 +18,12 @@ const props = Astro.props;
       <h2 class="font-semibold text-lg my-4">
         {props.title}
         {props.titleLink && (
-          <a href={props.titleLink.link} class="opacity-60">
-            {" "}
-            - <em>{props.titleLink.text}</em>
-          </a>
+          <span class="opacity-60">
+            -
+            <a href={props.titleLink.link} class="link">
+              <em>{props.titleLink.text}</em>
+            </a>
+          </span>
         )}
       </h2>
     )

@@ -23,6 +23,7 @@ const { personalProject }: Props = Astro.props;
         personalProject.imagePath && (
           <img
             src={personalProject.imagePath}
+            alt={`${personalProject.title} screenshot`}
             class="max-h-12 mr-4 rounded-lg"
           />
         )
