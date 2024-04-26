@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 pubDate: 2024-04-17
 title: "Setting up my Dotfiles"
-subtitle: ""
+subtitle: "What are they, why are they useful, and how I've setup mine"
 tags: ["dev", "dotfiles", "yadm"]
 ---
 
