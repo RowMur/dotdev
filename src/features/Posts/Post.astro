@@ -1,9 +1,7 @@
 ---
-import type { MarkdownInstance } from "astro";
-import DatedItem from "../components/DatedItem.astro";
-import Tags from "../components/Tags.astro";
-
-type Post = MarkdownInstance<Record<string, any>>;
+import DatedItem from "../../components/DatedItem.astro";
+import Tags from "../../components/Tags.astro";
+import { type Post } from "./types.astro";
 
 type Props = {
   post: Post;
