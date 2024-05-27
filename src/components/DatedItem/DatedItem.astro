@@ -1,12 +1,14 @@
 ---
+import Header from "./Header.astro";
+
 type Props = {
   date: string;
   title: string;
   subTitle: string;
-  link: string;
+  link?: string;
 };
 
-const { date, title, subTitle, link } = Astro.props;
+const { date, link, ...props } = Astro.props;
 ---
 
 <div class="flex mb-[16px]">
@@ -15,13 +17,7 @@ const { date, title, subTitle, link } = Astro.props;
   </div>
   <div>
     <a href={link}>
-      <h3 class="mb-2 font-bold">
-        {title}
-        <br />
-        <span class="opacity-60 text-sm font-medium"
-          >{subTitle}<span class="sm:hidden">, {date}</span></span
-        >
-      </h3>
+      <Header date={date} {...props} />
     </a>
     <slot />
   </div>
