@@ -1,15 +1,17 @@
 ---
 type Props = {
   text: String;
+  isActive?: boolean;
 };
 
-const { text }: Props = Astro.props;
+const { text, isActive }: Props = Astro.props;
 ---
 
-<div
-  class="grid place-content-center rounded-full bg-[#303030] w-fit px-4 text-sm"
+<a
+  href={`/posts/tags/${text}`}
+  class={`grid place-content-center rounded-full w-fit px-4 text-sm hover:bg-[#404040] ${isActive ? "bg-[#404040]" : "bg-[#303030]"}`}
 >
   <p class="opacity-60">
     {text}
   </p>
-</div>
+</a>

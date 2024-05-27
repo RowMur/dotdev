@@ -1,18 +1,35 @@
 ---
 import Section from "../../components/Section.astro";
+import Tags from "../../components/Tags.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Post from "./Post.astro";
 import type { Post as PostType } from "./types.astro";
+
+const allPosts = await Astro.glob("../../pages/posts/*.md");
+const uniqueTags = [
+  ...new Set(allPosts.map((post) => post.frontmatter.tags as string[]).flat()),
+];
 
 type Props = {
   title: string;
   posts: PostType[];
 };
 
+const { tag } = Astro.params;
 const { title, posts } = Astro.props;
 ---
 
 <BaseLayout title={title}>
+  {
+    tag && (
+      <a href="/posts" class="opacity-60 link">
+        Back to all posts
+      </a>
+    )
+  }
+  <div class="mt-4">
+    <Tags tags={uniqueTags} activeTag={tag} />
+  </div>
   <Section>
     {posts.map((post) => <Post post={post} />)}
   </Section>

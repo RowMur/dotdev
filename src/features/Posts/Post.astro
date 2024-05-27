@@ -10,12 +10,11 @@ type Props = {
 const { post } = Astro.props;
 ---
 
-<a href={post.url}>
-  <DatedItem
-    date={new Date(post.frontmatter.pubDate).toLocaleDateString("en-GB")}
-    title={post.frontmatter.title}
-    subTitle={post.frontmatter.subtitle}
-  >
-    <Tags tags={post.frontmatter.tags} />
-  </DatedItem>
-</a>
+<DatedItem
+  date={new Date(post.frontmatter.pubDate).toLocaleDateString("en-GB")}
+  title={post.frontmatter.title}
+  subTitle={post.frontmatter.subtitle}
+  link={post.url ?? ""}
+>
+  <Tags tags={post.frontmatter.tags} />
+</DatedItem>
