@@ -1,0 +1,19 @@
+---
+import Section from "../../components/Section.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Post from "./Post.astro";
+import type { Post as PostType } from "./types.astro";
+
+type Props = {
+  title: string;
+  posts: PostType[];
+};
+
+const { title, posts } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <Section>
+    {posts.map((post) => <Post post={post} />)}
+  </Section>
+</BaseLayout>

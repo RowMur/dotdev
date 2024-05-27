@@ -1,8 +1,7 @@
 ---
-import type { GetStaticPaths, MarkdownInstance } from "astro";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Section from "../../../components/Section.astro";
-import Post from "../../../features/Post.astro";
+import type { GetStaticPaths } from "astro";
+import type { Post as PostType } from "../../../features/Posts/types.astro";
+import PostsPage from "../../../features/Posts/PostsPage.astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await Astro.glob("../*.md");
@@ -21,15 +20,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 type Props = {
-  posts: MarkdownInstance<Record<string, any>>[];
+  posts: PostType[];
 };
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout title={`Posts Tagged "${tag}"`}>
-  <Section>
-    {posts.map((post) => <Post post={post} />)}
-  </Section>
-</BaseLayout>
+<PostsPage title={`Posts Tagged "${tag}"`} posts={posts} />
